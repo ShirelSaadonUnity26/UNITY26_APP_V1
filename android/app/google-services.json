@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "132287756338",
+    "project_id": "unity26appv1",
+    "storage_bucket": "unity26appv1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132287756338:android:4e86bcfabf14155310242b",
+        "android_client_info": {
+          "package_name": "com.example.unity26_app_v1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132287756338-fboo8to025ikh44ukpug9urgpn7btaml.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.unity26_app_v1",
+            "certificate_hash": "aa5e8cc34832180fee9c63db372ca414d37c70c2"
+          }
+        },
+        {
+          "client_id": "132287756338-6nluv0k6j7kl98d70o7r09t148k3fktv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-XI-zr5KuGAA94Kt4YmGEVcPu7T_Bl9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132287756338-6nluv0k6j7kl98d70o7r09t148k3fktv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
