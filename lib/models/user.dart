@@ -5,10 +5,10 @@ class MyUser{
   final String lastName;
   final String birthday;
   final int __v;
-  final Assistant assistant;
+  //final Assistant assistant;
 
 
-  MyUser(this.idUser, this.phone, this.firstName, this.lastName, this.birthday,this.__v,this.assistant);
+  MyUser(this.idUser, this.phone, this.firstName, this.lastName, this.birthday,this.__v);
 
   MyUser.fromJson(Map<String, dynamic> json)
       : idUser = json['_id'] as String,
@@ -16,8 +16,8 @@ class MyUser{
         firstName= json['firstName']as String,
         lastName= json['lastName']as String,
         birthday= json['birthday'] as String,
-        __v=json['__v']as int,
-        assistant= Assistant.fromJson(json['assistant']) ;
+        __v=json['__v']as int
+   ;
 
 
   Map<String, dynamic> toJson() => {
@@ -27,8 +27,7 @@ class MyUser{
     'firstName':firstName,
     'lastName':lastName,
     'birthday':birthday,
-    '__v':__v,
-    'assistant':assistant
+    '__v':__v
 
   };
 }

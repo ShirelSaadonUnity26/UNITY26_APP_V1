@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:unity26_app_v1/API/Http_Caller.dart';
 import 'package:unity26_app_v1/google_places/flutter_google_places.dart';
-import 'package:unity26_app_v1/models/userBoundary.dart';
+import 'package:unity26_app_v1/models/user_model.dart';
 import 'package:unity26_app_v1/screens/address_complete/address_complete_screen.dart';
 
 const kGoogleApiKey = "AIzaSyAm9qYa5nZgjvv0as65XEAtVLgu-04WFVs";

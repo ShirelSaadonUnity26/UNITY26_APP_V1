@@ -7,7 +7,7 @@ import 'package:unity26_app_v1/API/Http_Caller.dart';
 import 'package:unity26_app_v1/Background.dart';
 import 'package:unity26_app_v1/components/RoundedButon.dart';
 import 'package:unity26_app_v1/components/RoundedInputField.dart';
-import 'package:unity26_app_v1/models/userBoundary.dart';
+import 'package:unity26_app_v1/models/user_model.dart';
 import 'package:unity26_app_v1/screens/is_assistant/is_assistant_screen.dart';
 
 class Body extends StatefulWidget {

@@ -10,10 +10,10 @@ import 'package:unity26_app_v1/Background.dart';
 import 'package:unity26_app_v1/components/RoundedButon.dart';
 import 'package:unity26_app_v1/components/RoundedInputField.dart';
 import 'package:unity26_app_v1/models/userBoundary.dart';
+import 'package:unity26_app_v1/models/user_model.dart';
 import 'package:unity26_app_v1/screens/date_of_birthday/date_of_birthday_screen.dart';
 import 'package:unity26_app_v1/widget/app_bar.dart';
 
-import '../../../user/user_data.dart';
 
 class Body extends StatefulWidget {
 
@@ -22,7 +22,7 @@ class Body extends StatefulWidget {
 }
 
 class _Body extends State<Body> {
-  UserBoundary ? userBoundary;
+  UserModel ? userModel;
 
   final lastNameController = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -31,14 +31,10 @@ class _Body extends State<Body> {
   final _formKey = GlobalKey<FormState>();
   final firstNameController = TextEditingController();
   final secondNameController = TextEditingController();
-  var user = UserData.myUser;
 
 
 
 
-  void updateUserValue(String name) {
-    user.name = name;
-  }
 
 
   void inputData() {

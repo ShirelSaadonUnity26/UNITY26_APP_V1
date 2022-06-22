@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:unity26_app_v1/API/Http_Caller.dart';
 import 'package:unity26_app_v1/components/RoundedButon.dart';
 import 'package:unity26_app_v1/constants.dart';
-import 'package:unity26_app_v1/models/userBoundary.dart';
+import 'package:unity26_app_v1/models/user_model.dart';
 import 'package:unity26_app_v1/screens/home/home_screen.dart';
 
 class Body extends StatefulWidget {

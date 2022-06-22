@@ -24,18 +24,21 @@ class RoundedInputField extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: TextField(
+        textDirection: TextDirection.rtl,
           controller: controller,
           decoration: InputDecoration(
-            icon: icon,
             hintText: hintText,
             labelText: labelText,
             hintStyle: const TextStyle(color: kHintColor),
             labelStyle: const TextStyle(
+
               color: Colors.black,
             ),
+            icon: icon,
           )),
       decoration: BoxDecoration(
         color: kTextFieldColor,
+
         borderRadius: BorderRadius.circular(29),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

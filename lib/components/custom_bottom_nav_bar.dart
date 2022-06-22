@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:unity26_app_v1/constants.dart';
+import 'package:unity26_app_v1/screens/profile_page.dart';
 import 'package:unity26_app_v1/screens/center_helper/center_helper_screen.dart';
 import 'package:unity26_app_v1/size_config.dart';
 
@@ -42,7 +43,14 @@ class CustomBottonNavBar extends StatelessWidget {
               NavItem(
                 icon: "assets/icons_new/profile.svg",
                 title: "פרופיל",
-                press: () {},
+                press: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfilePage(),
+                      ));
+
+                },
               ),
             ],
           ),

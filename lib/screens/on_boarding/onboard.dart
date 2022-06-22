@@ -19,7 +19,7 @@ class _OnBoardState extends State<OnBoard> {
   late PageController _pageController;
   List<OnboardModel> screens = <OnboardModel>[
     OnboardModel(
-      img: 'assets/images/logo.png',
+      img: 'assets/images/LogoMakr-0I6KCE.png',
       text: "ברוכים הבאים ",
       desc:
       ".מהיום ניתן לקבל סיוע בכל מקרה חירום מאנשים שנמצאים בסביבתך",

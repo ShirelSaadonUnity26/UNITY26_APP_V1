@@ -7,6 +7,8 @@ import 'home_header.dart';
 
 
 class Body extends StatelessWidget {
+  const Body({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     // You have to call SizeConfig on your starting page
@@ -18,9 +20,9 @@ class Body extends StatelessWidget {
         child: Column(
           children:  [
             HomeHeader(),
-            VerticalSpacing(),
-            Categories(),
-            F(),
+            const VerticalSpacing(),
+            const Categories(),
+            const F(),
 
           ],
         ),

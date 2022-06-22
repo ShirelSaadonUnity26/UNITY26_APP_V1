@@ -16,7 +16,7 @@ class Background extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Image.asset(
-            "assets/images/logo.png",
+            "assets/images/LogoMakr-9JpxYI.png",
             height: size.height * 0.3,
             width: size.width * 0.3,
           ),

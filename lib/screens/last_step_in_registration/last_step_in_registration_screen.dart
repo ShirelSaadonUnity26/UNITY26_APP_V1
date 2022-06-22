@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:unity26_app_v1/models/userBoundary.dart';
+import 'package:unity26_app_v1/models/user_model.dart';
 import 'package:unity26_app_v1/screens/last_step_in_registration/components/body.dart';
 class LastStepRegistrationScreen extends StatelessWidget {
 

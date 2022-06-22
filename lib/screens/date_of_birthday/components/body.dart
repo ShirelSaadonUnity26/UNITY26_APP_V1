@@ -129,7 +129,7 @@ class _Body extends State<Body> {
                                         .show();
                                   }
                                   else {
-                                    update1(idUser.toString(), date.toString());
+                                    updateDateOfBirth(idUser.toString(), date.toString());
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(

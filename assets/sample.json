@@ -1,50 +1,13 @@
 {
-  "User": [
-    {
-      "_id": "vp4Jd1ITkpeKzOuy7f1mbcOJJKM2",
-      "phone": "+972528198070",
-      "__v": 0,
-      "firstName": "שיראל",
-      "lastName": "סעדון",
-      "birthday": "1973-07-24 00:00:00.000",
-      "assistant": {
-        "category": [
-          "MEDICAL"
-        ],
-        "professional": "רופא",
-        "descriptionInstrumentation": ""
-      }
-    },
-    {
-      "_id": "54bIgsprtlUTbvRO2MW1HgDeT8A2",
-      "phone": "+972534203200",
-      "__v": 0,
-      "firstName": "שיראל",
-      "lastName": "סעדון",
-      "birthday": "2000-06-22 00:00:00.000",
-      "assistant": {
-        "category": [
-          "MEDICAL"
-        ],
-        "professional": "רופא",
-        "descriptionInstrumentation": ""
-      }
-    },
-    {
-      "_id": "d67e3M8IQ5bgNYyOHwvuuhp2Vez2",
-      "phone": "+972508820963",
-      "__v": 0,
-      "firstName": "שניר",
-      "lastName": "יצחק",
-      "birthday": "1994-06-22 00:00:00.000",
-      "assistant": {
-        "category": [
-          "MEDICAL",
-          "THEFTS"
-        ],
-        "professional": "חובש",
-        "descriptionInstrumentation": "ב"
-      }
-    }
-  ]
+  "_id": "62b354828158a4c64319ea31",
+  "firstName": "shirel",
+  "lastName": "saadon",
+  "birthday": "1973-06-19 00:00:00.000",
+  "assistant": {
+    "category": [
+      "ANIMAL"
+    ],
+    "professional": "Docktor",
+    "descriptionInstrumentation": "sss"
+  }
 }

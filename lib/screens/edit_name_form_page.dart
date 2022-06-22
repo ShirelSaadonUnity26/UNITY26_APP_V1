@@ -1,37 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:string_validator/string_validator.dart';
-import 'package:unity26_app_v1/user/user_data.dart';
+import 'package:unity26_app_v1/components/RoundedButon.dart';
+
+import 'package:unity26_app_v1/online/online.dart';
+import 'package:unity26_app_v1/online/online_data.dart';
 import 'package:unity26_app_v1/widget/app_bar.dart';
 
-
-// This class handles the Page to edit the Name Section of the User Profile.
-class EditNameFormPage extends StatefulWidget {
-  const EditNameFormPage({Key? key}) : super(key: key);
-
+class EditPhoneFormPage extends StatefulWidget {
+  const EditPhoneFormPage({Key? key}) : super(key: key);
   @override
-  EditNameFormPageState createState() {
-    return EditNameFormPageState();
+  EditPhoneFormPageState createState() {
+    return EditPhoneFormPageState();
   }
 }
 
-class EditNameFormPageState extends State<EditNameFormPage> {
+class EditPhoneFormPageState extends State<EditPhoneFormPage> {
   final _formKey = GlobalKey<FormState>();
-  final firstNameController = TextEditingController();
-  final secondNameController = TextEditingController();
-  var user = UserData.myUser;
+  final fromController = TextEditingController();
+  final toController = TextEditingController();
+  var user = OnlineData.myUser;
 
   @override
   void dispose() {
-    firstNameController.dispose();
+    toController.dispose();
+    fromController.dispose();
     super.dispose();
   }
 
-  void updateUserValue(String name) {
-    user.name = name;
+  void updateUserValue(String phone) {
+    user.to = phone.toString();
   }
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: buildAppBar(context),
         body: Form(
@@ -40,12 +42,12 @@ class EditNameFormPageState extends State<EditNameFormPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              const SizedBox(
-                  width: 330,
-                  child: Text(
-                    "מהו שמך ?",
+              SizedBox(
+                  width: 270,
+                  child: const Text(
+                    "מהן השעות אותן תרצה להגדיר",
                     style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   )),
@@ -67,8 +69,8 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                               return null;
                             },
                             decoration:
-                            const InputDecoration(labelText: 'שם פרטי'),
-                            controller: firstNameController,
+                            InputDecoration(labelText: 'משעה'),
+                            controller: fromController,
                           ))),
                   Padding(
                       padding: EdgeInsets.fromLTRB(0, 40, 16, 0),
@@ -84,38 +86,30 @@ class EditNameFormPageState extends State<EditNameFormPage> {
                               return null;
                             },
                             decoration:
-                            const InputDecoration(labelText: 'שם משפחה'),
-                            controller: secondNameController,
+                            const InputDecoration(labelText: 'עד שעה'),
+                            controller: toController,
                           )))
                 ],
               ),
-              Padding(
-                  padding: EdgeInsets.only(top: 150),
-                  child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: SizedBox(
-                        width: 330,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Validate returns true if the form is valid, or false otherwise.
-                            if (_formKey.currentState!.validate() &&
-                                isAlpha(firstNameController.text +
-                                    secondNameController.text)) {
-                              updateUserValue(firstNameController.text +
-                                  " " +
-                                  secondNameController.text);
-                              Navigator.pop(context);
-                            }
+               RoundedButton(
+                 press: () {
+    if (_formKey.currentState!.validate())
+    {
+    updateUserValue(fromController.text +
+    " - " +
+    toController.text);
+    Navigator.pop(context);
+    }
+
                           },
-                          child: const Text(
-                            'Update',
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ),
-                      )))
-            ],
-          ),
-        ));
+
+                          text: 'update',
+    )
+  ,
+              SizedBox(height: size.height * 0.005),
+  ],
+                      )));
+
+
   }
 }

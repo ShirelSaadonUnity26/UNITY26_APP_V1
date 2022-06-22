@@ -4,7 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:unity26_app_v1/API/firebase_api.dart';
 import 'package:unity26_app_v1/components/RoundedButon.dart';
-import 'package:unity26_app_v1/models/userBoundary.dart';
+import 'package:unity26_app_v1/models/user_model.dart';
 import 'package:unity26_app_v1/screens/last_step_in_registration/last_step_in_registration_screen.dart';
 
 import 'package:unity26_app_v1/widget/button_widget.dart';

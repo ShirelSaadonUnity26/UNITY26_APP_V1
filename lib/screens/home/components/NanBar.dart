@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:unity26_app_v1/screens/assistance_system_settings.dart';
+import 'package:unity26_app_v1/screens/emergency_contacts.dart';
+import 'package:unity26_app_v1/screens/help_center.dart';
+import 'package:unity26_app_v1/screens/profile_page.dart';
 import 'package:unity26_app_v1/screens/home/home_screen.dart';
 import 'package:unity26_app_v1/screens/home/profile_edit/profile_edit_screen.dart';
 
@@ -36,7 +40,7 @@ class NavBar extends StatelessWidget {
           //
 
       DrawerHeader(
-      child: Image.asset("assets/images/logo.png"),
+      child: Image.asset("assets/images/LogoMakr-9JpxYI.png"),
       ),
           ListTile(
             enabled: true,
@@ -46,7 +50,7 @@ class NavBar extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ProfileEditScreen(),
+                    builder: (context) => const ProfilePage(),
                   ),
                 );
               },
@@ -54,7 +58,15 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.contact_phone_sharp),
             title: Text("מערך הסיוע"),
-            onTap: () => null,
+            onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>  SettingsPage(),
+                ),
+              );
+
+            },
           ),
           ListTile(
             leading: Icon(Icons.notifications),
@@ -81,7 +93,16 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.info),
             title: Text('מידע שימושי'),
-            onTap: () => null,
+            onTap: () {
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>  const HelpCenterPage(),
+                ),
+              );
+
+            }
           ),
           ListTile(
             leading: Icon(Icons.menu_book_rounded),
@@ -91,7 +112,14 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.message_sharp),
             title: Text('צור קשר'),
-            onTap: () => null,
+            onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const EmergencyContacts(),
+                ),
+              );
+            },
           ),
           ListTile(
             leading: Icon(Icons.favorite_outline_sharp),

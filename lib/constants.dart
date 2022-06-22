@@ -57,8 +57,8 @@ const String kAddressNullError = "Please Enter your address";
 //////////////////////////////////////////////////////////////
 const String splash1_title = "ברוכים הבאים";
 const String splash1_des = "מהיום ניתן לקבל סיוע בכל מקרה חירום ";
-const kHintColor = Color(0xB54B4B4B);
-const kTextFieldColor = Color(0x970066FF);
+const kHintColor = Color(0xF90E0E0E);
+const kTextFieldColor = Color(0xFFF8F8F8);
 final otpInputDecoration = InputDecoration(
   contentPadding:
   EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),

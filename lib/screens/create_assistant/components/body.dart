@@ -7,7 +7,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:unity26_app_v1/API/Http_Caller.dart';
 import 'package:unity26_app_v1/components/RoundedButon.dart';
 import 'package:unity26_app_v1/components/RoundedInputField.dart';
-import 'package:unity26_app_v1/models/userBoundary.dart';
+import 'package:unity26_app_v1/models/user_model.dart';
 import 'package:unity26_app_v1/screens/create_assistant/components/upload_image.dart';
 
 class Body extends StatefulWidget {
@@ -168,12 +168,10 @@ class _Body extends State<Body> {
               RoundedButton(
                   text: " יש לצרף ת.ז/דרכון/רישיון",
                   press: () async {
-
-                    Assistant x =Assistant(temp,professionalController.text,"");
-                    updateAssistant(idUser.toString(),x);
-                    await updateArrayOfCategory(idUser!, x, temp);
-
-
+                    var s = 'ddd';
+                   Assistant x =Assistant(category: temp,professional: professionalController.text,descriptionInstrumentation: '', hours:Hours('','')  ,days: []);
+                   updateAssistant(idUser.toString(),x);
+                   await updateArrayOfCategory(idUser!, x, temp);
                     if(!isValidName(professionalController.text)) {
                     Alert(
                         context: context,

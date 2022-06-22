@@ -2,6 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>This app needs to access your location</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -17,7 +18,7 @@
 	<key>CFBundleName</key>
 	<string>unity26_app_v1</string>
 	<key>CFBundlePackageType</key>
-	<string>APPL</string>
+	<string>APP</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
