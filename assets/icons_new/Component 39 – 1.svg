@@ -1,0 +1,13 @@
+<svg id="Component_39_1" data-name="Component 39 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_2182" data-name="Rectangle 2182" width="19.973" height="19.5" fill="#506077"/>
+    </clipPath>
+  </defs>
+  <rect id="Rectangle_2117" data-name="Rectangle 2117" width="24" height="24" fill="none"/>
+  <g id="calls_icon" data-name="calls icon" transform="translate(2 2)">
+    <g id="Group_33585" data-name="Group 33585" transform="translate(0 0)" clip-path="url(#clip-path)">
+      <path id="Path_16152" data-name="Path 16152" d="M9.382,9.382h1.209V2.838H9.382Zm.6,3.311a.676.676,0,1,0-.512-.2.693.693,0,0,0,.512.2M0,19.5V1.524A1.481,1.481,0,0,1,.447.46,1.449,1.449,0,0,1,1.524,0H18.449a1.461,1.461,0,0,1,1.064.46,1.461,1.461,0,0,1,.46,1.064v12.72a1.573,1.573,0,0,1-1.524,1.524H3.732Zm1.183-2.891,2.024-2.024H18.449a.317.317,0,0,0,.342-.342V1.524a.317.317,0,0,0-.342-.342H1.524a.317.317,0,0,0-.342.342Zm0-15.085v0Z" transform="translate(0 0)" fill="#506077"/>
+    </g>
+  </g>
+</svg>

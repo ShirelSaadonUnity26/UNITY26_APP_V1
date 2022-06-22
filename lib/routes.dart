@@ -2,12 +2,10 @@ import 'package:flutter/widgets.dart';
 //import 'package:shop_app/screens/cart/cart_screen.dart';
 
 import 'package:unity26_app_v1/components/date_picker_widget.dart';
-import 'package:unity26_app_v1/screens/signUpPart2/age_calculator_screen.dart';
 
 // import 'package:shop_app/screens/home/home_screen.dart';
 // import 'package:shop_app/screens/login_success/login_success_screen.dart';
 //import 'package:unity26_app_v1/screens/otp/otp_screen.dart';
-import 'package:unity26_app_v1/screens/on_boarding/onboard.dart';
 // import 'package:shop_app/screens/profile/profile_screen.dart';
 // import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 // import 'package:shop_app/screens/splash/splash_screen.dart';

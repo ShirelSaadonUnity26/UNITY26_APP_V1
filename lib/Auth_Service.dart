@@ -1,21 +1,18 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:unity26_app_v1/components/date_picker_widget.dart';
+import 'package:unity26_app_v1/API/Http_Caller.dart';
+import 'package:unity26_app_v1/models/user.dart';
 import 'package:unity26_app_v1/models/userBoundary.dart';
 import 'package:unity26_app_v1/screens/complete_profile/complete_profile_screen.dart';
-import 'package:unity26_app_v1/screens/home/home_screen.dart';
-import 'package:unity26_app_v1/screens/signUpPart2/age_calculator_screen.dart';
 
 
 
 class AuthClass {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  final storage = new FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
 
 
   void storeTokenAndData(UserCredential userCredential) async {
@@ -52,7 +49,7 @@ class AuthClass {
     };
     try {
       await _auth.verifyPhoneNumber(
-          timeout: Duration(seconds: 60),
+          timeout: const Duration(seconds: 60),
           phoneNumber: phoneNumber,
           verificationCompleted: verificationCompleted,
           verificationFailed: verificationFailed,
@@ -72,11 +69,18 @@ class AuthClass {
       UserCredential userCredential =
       await _auth.signInWithCredential(credential);
       storeTokenAndData(userCredential);
+      signUpUser(_auth.currentUser!.uid.toString(),_auth.currentUser!.phoneNumber.toString(),
+          (user){
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (builder) =>  CompleteProfileScreen()),
+                    (route) => false);
+          }
 
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (builder) =>  CompleteProfileScreen()),
-              (route) => false);
+
+
+      );
+
 
       showSnackBar(context, "logged In");
 

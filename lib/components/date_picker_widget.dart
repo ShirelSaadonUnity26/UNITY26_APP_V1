@@ -11,7 +11,7 @@ import 'package:unity26_app_v1/helper/datePicker/date_time_formatter.dart';
 import '../i18n/date_picker_i18n.dart';
 
 /// Solar months of 31 days.
-const List<int> _solarMonthsOf31Days = const <int>[1, 3, 5, 7, 8, 10, 12];
+const List<int> _solarMonthsOf31Days = <int>[1, 3, 5, 7, 8, 10, 12];
 
 /// DatePicker widget.
 class DatePickerWidget extends StatefulWidget {
@@ -21,13 +21,13 @@ class DatePickerWidget extends StatefulWidget {
     this.firstDate,
     this.lastDate,
     this.initialDate,
-    this.dateFormat: DATETIME_PICKER_DATE_FORMAT,
-    this.locale: DATETIME_PICKER_LOCALE_DEFAULT,
-    this.pickerTheme: DateTimePickerTheme.Default,
+    this.dateFormat = DATETIME_PICKER_DATE_FORMAT,
+    this.locale = DATETIME_PICKER_LOCALE_DEFAULT,
+    this.pickerTheme = DateTimePickerTheme.Default,
     this.onCancel,
     this.onChange,
     this.onConfirm,
-    this.looping: false,
+    this.looping = false,
   }) : super(key: key) {
     DateTime minTime = firstDate ?? DateTime.parse(DATE_PICKER_MIN_DATETIME);
     DateTime maxTime = lastDate ?? DateTime.parse(DATE_PICKER_MAX_DATETIME);
@@ -45,7 +45,7 @@ class DatePickerWidget extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() =>
-      _DatePickerWidgetState(this.firstDate, this.lastDate, this.initialDate);
+      _DatePickerWidgetState(firstDate, lastDate, initialDate);
 }
 
 class _DatePickerWidgetState extends State<DatePickerWidget> {
@@ -65,26 +65,26 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
       DateTime? minDateTime, DateTime? maxDateTime, DateTime? initialDateTime) {
     // handle current selected year、month、day
     DateTime initDateTime = initialDateTime ?? DateTime.now();
-    this._currYear = initDateTime.year;
-    this._currMonth = initDateTime.month;
-    this._currDay = initDateTime.day;
+    _currYear = initDateTime.year;
+    _currMonth = initDateTime.month;
+    _currDay = initDateTime.day;
 
     // handle DateTime range
-    this._minDateTime = minDateTime ?? DateTime.parse(DATE_PICKER_MIN_DATETIME);
-    this._maxDateTime = maxDateTime ?? DateTime.parse(DATE_PICKER_MAX_DATETIME);
+    _minDateTime = minDateTime ?? DateTime.parse(DATE_PICKER_MIN_DATETIME);
+    _maxDateTime = maxDateTime ?? DateTime.parse(DATE_PICKER_MAX_DATETIME);
 
     // limit the range of year
-    this._yearRange = _calcYearRange();
-    this._currYear = min(max(_minDateTime.year, _currYear!), _maxDateTime.year);
+    _yearRange = _calcYearRange();
+    _currYear = min(max(_minDateTime.year, _currYear!), _maxDateTime.year);
 
     // limit the range of month
-    this._monthRange = _calcMonthRange();
-    this._currMonth =
+    _monthRange = _calcMonthRange();
+    _currMonth =
         min(max(_monthRange!.first, _currMonth!), _monthRange!.last);
 
     // limit the range of day
-    this._dayRange = _calcDayRange();
-    this._currDay = min(max(_dayRange!.first, _currDay!), _dayRange!.last);
+    _dayRange = _calcDayRange();
+    _currDay = min(max(_dayRange!.first, _currDay!), _dayRange!.last);
 
     // create scroll controller
     _yearScrollCtrl = FixedExtentScrollController(
@@ -155,7 +155,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
     List<Widget> pickers = [];
     List<String> formatArr =
         DateTimeFormatter.splitDateFormat(widget.dateFormat);
-    formatArr.forEach((format) {
+    for (var format in formatArr) {
       List<int> valueRange = _findPickerItemRange(format)!;
 
       Widget pickerColumn = _renderDatePickerColumnComponent(
@@ -174,7 +174,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
           fontSize: widget.pickerTheme!.itemTextStyle.fontSize ??
               sizeByFormat(widget.dateFormat!));
       pickers.add(pickerColumn);
-    });
+    }
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: pickers);
   }
@@ -192,7 +192,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
         children: <Widget>[
           Positioned(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 7, vertical: 18),
+              padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 18),
               height: widget.pickerTheme!.pickerHeight,
               decoration:
                   BoxDecoration(color: widget.pickerTheme!.backgroundColor),
@@ -262,8 +262,9 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
   }
 
   double sizeByFormat(String format) {
-    if (format.contains("-MMMM") || format.contains("MMMM-"))
+    if (format.contains("-MMMM") || format.contains("MMMM-")) {
       return DATETIME_PICKER_ITEM_TEXT_SIZE_SMALL;
+    }
 
     return DATETIME_PICKER_ITEM_TEXT_SIZE_BIG;
   }
@@ -426,9 +427,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
     int maxYear = _maxDateTime.year;
     int minMonth = _minDateTime.month;
     int maxMonth = _maxDateTime.month;
-    if (currMonth == null) {
-      currMonth = _currMonth;
-    }
+    currMonth ??= _currMonth;
     if (minYear == _currYear && minMonth == currMonth) {
       // selected minimum year and month, limit day range
       minDay = _minDateTime.day;

@@ -1,16 +1,55 @@
-import 'package:flutter/material.dart';
+class MyUser{
+  final String idUser;
+  final String phone;
+  final String firstName;
+  final String lastName;
+  final String birthday;
+  final int __v;
+  final Assistant assistant;
 
-class User {
-  final String name, image;
 
-  User({required this.name, required this.image});
+  MyUser(this.idUser, this.phone, this.firstName, this.lastName, this.birthday,this.__v,this.assistant);
+
+  MyUser.fromJson(Map<String, dynamic> json)
+      : idUser = json['_id'] as String,
+        phone = json['phone'] as String,
+        firstName= json['firstName']as String,
+        lastName= json['lastName']as String,
+        birthday= json['birthday'] as String,
+        __v=json['__v']as int,
+        assistant= Assistant.fromJson(json['assistant']) ;
+
+
+  Map<String, dynamic> toJson() => {
+
+    '_id':idUser,
+    'phone':phone,
+    'firstName':firstName,
+    'lastName':lastName,
+    'birthday':birthday,
+    '__v':__v,
+    'assistant':assistant
+
+  };
 }
+class Assistant {
+  List<String> category;
+  String professional;
+  String descriptionInstrumentation;
 
-// Demo List of Top Travelers
-List<User> topTravelers = [user1, user2, user3, user4];
+  Assistant(this.category, this.professional, this.descriptionInstrumentation);
 
-// demo user
-User user1 = User(name: "James", image: "assets/images/james.png");
-User user2 = User(name: "John", image: "assets/images/John.png");
-User user3 = User(name: "Marry", image: "assets/images/marry.png");
-User user4 = User(name: "Rosy", image: "assets/images/rosy.png");
+  Assistant.fromJson(Map<String, dynamic> json)
+      :
+        category = json['category'] as List<String>,
+        professional = json['professional'] as String,
+        descriptionInstrumentation=json['descriptionInstrumentation'] as String;
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['category'] = category;
+    data['professional'] = professional;
+    data['descriptionInstrumentation'] = descriptionInstrumentation;
+    return data;
+  }
+}

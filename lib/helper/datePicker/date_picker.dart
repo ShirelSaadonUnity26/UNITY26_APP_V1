@@ -95,16 +95,16 @@ class DatePicker {
     DateTime? lastDate,
     DateTime? initialDate,
     String? dateFormat,
-    DateTimePickerLocale locale: DATETIME_PICKER_LOCALE_DEFAULT,
-    DateTimePickerMode pickerMode: DateTimePickerMode.date,
+    DateTimePickerLocale locale = DATETIME_PICKER_LOCALE_DEFAULT,
+    DateTimePickerMode pickerMode = DateTimePickerMode.date,
     Color? backgroundColor,
     Color? textColor,
     TextStyle? itemTextStyle,
     String? titleText,
     String? confirmText,
     String? cancelText,
-    bool looping: false,
-    bool reverse: false,
+    bool looping = false,
+    bool reverse = false,
   }) {
     DateTime? _selectedDate = initialDate;
     final List<Widget> listButtonActions = [
@@ -125,34 +125,26 @@ class DatePicker {
     ];
 
     // handle the range of datetime
-    if (firstDate == null) {
-      firstDate = DateTime.parse(DATE_PICKER_MIN_DATETIME);
-    }
-    if (lastDate == null) {
-      lastDate = DateTime.parse(DATE_PICKER_MAX_DATETIME);
-    }
+    firstDate ??= DateTime.parse(DATE_PICKER_MIN_DATETIME);
+    lastDate ??= DateTime.parse(DATE_PICKER_MAX_DATETIME);
 
     // handle initial DateTime
-    if (initialDate == null) {
-      initialDate = DateTime.now();
-    }
+    initialDate ??= DateTime.now();
 
-    if (backgroundColor == null)
-      backgroundColor = DateTimePickerTheme.Default.backgroundColor;
+    backgroundColor ??= DateTimePickerTheme.Default.backgroundColor;
 //    if (itemTextStyle == null)
 //      itemTextStyle = DateTimePickerTheme.Default.itemTextStyle;
 
-    if (textColor == null)
-      textColor = DateTimePickerTheme.Default.itemTextStyle.color;
+    textColor ??= DateTimePickerTheme.Default.itemTextStyle.color;
 
     var datePickerDialog = AlertDialog(
       title: Text(
         titleText ?? "Select Date",
         style: TextStyle(color: textColor),
       ),
-      contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 14),
+      contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 14),
       backgroundColor: backgroundColor,
-      content: Container(
+      content: SizedBox(
         width: 300,
         child: DatePickerWidget(
           firstDate: firstDate,
@@ -256,8 +248,8 @@ class _DatePickerComponent extends StatelessWidget {
   final _DatePickerRoute route;
   final double _pickerHeight;
 
-  _DatePickerComponent({required this.route, required pickerHeight})
-      : this._pickerHeight = pickerHeight;
+  const _DatePickerComponent({required this.route, required pickerHeight})
+      : _pickerHeight = pickerHeight;
 
   @override
   Widget build(BuildContext context) {

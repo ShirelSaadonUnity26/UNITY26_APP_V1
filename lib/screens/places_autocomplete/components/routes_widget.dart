@@ -1,19 +1,23 @@
 import 'dart:async';
+
 import 'dart:io';
 import 'dart:math';
-import 'dart:ui';
 
-import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:google_api_headers/google_api_headers.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_maps_webservice/places.dart';
+import 'package:unity26_app_v1/API/Http_Caller.dart';
 import 'package:unity26_app_v1/google_places/flutter_google_places.dart';
+import 'package:unity26_app_v1/models/userBoundary.dart';
+import 'package:unity26_app_v1/screens/address_complete/address_complete_screen.dart';
 
 const kGoogleApiKey = "AIzaSyAm9qYa5nZgjvv0as65XEAtVLgu-04WFVs";
 
 final customTheme = ThemeData(
-  brightness: Brightness.dark,
+  brightness: Brightness.light,
   inputDecorationTheme: const InputDecorationTheme(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(4.00)),
@@ -32,7 +36,7 @@ class RoutesWidget extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
     title: "My App",
     darkTheme: customTheme,
-    themeMode: ThemeMode.dark,
+    themeMode: ThemeMode.light,
     routes: {
       "/": (_) => const MyService(),
       "/search": (_) => CustomSearchScaffold(),
@@ -49,12 +53,18 @@ class MyService extends StatefulWidget {
 
 final homeScaffoldKey = GlobalKey<ScaffoldState>();
 final searchScaffoldKey = GlobalKey<ScaffoldState>();
+String ? idUser;
+FirebaseAuth auth = FirebaseAuth.instance;
+Address ? address;
+
+
 
 class _MyService extends State<MyService> {
-  final Mode? _mode = Mode.overlay;
+  Mode? _mode = Mode.overlay;
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       key: homeScaffoldKey,
       appBar: AppBar(
@@ -64,19 +74,38 @@ class _MyService extends State<MyService> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-
-
               ElevatedButton(
-                child: const Text("Custom"),
+                child: const Text("הזן כתובת"),
                 onPressed: () {
                   Navigator.of(context).pushNamed("/search");
                 },
+              ),
+              const SizedBox(
+                height: 170,
               ),
             ],
           )),
     );
   }
 
+  Widget _buildDropdownMenu() => DropdownButton(
+    value: _mode,
+    items: const <DropdownMenuItem<Mode>>[
+      DropdownMenuItem<Mode>(
+        child: Text("Overlay"),
+        value: Mode.overlay,
+      ),
+      DropdownMenuItem<Mode>(
+        child: Text("Fullscreen"),
+        value: Mode.fullscreen,
+      ),
+    ],
+    onChanged: (dynamic m) {
+      setState(() {
+        _mode = m;
+      });
+    },
+  );
 
 
   void onError(PlacesAutocompleteResponse response) {
@@ -95,7 +124,7 @@ class _MyService extends State<MyService> {
       mode: _mode!,
       language: "he",
       decoration: InputDecoration(
-        hintText: 'Search',
+        hintText: 'חפש כתובת',
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
           borderSide: const BorderSide(
@@ -107,6 +136,7 @@ class _MyService extends State<MyService> {
     );
 
     displayPrediction(p, context);
+
   }
 }
 
@@ -118,82 +148,101 @@ Future<void> displayPrediction(Prediction? p, BuildContext context) async {
       apiHeaders: await const GoogleApiHeaders().getHeaders(),
       
     );
+    inputData();
     stderr.writeln(_places);
     PlacesDetailsResponse detail =
     await _places.getDetailsByPlaceId(p.placeId!);
     final lat = detail.result.geometry!.location.lat;
     final lng = detail.result.geometry!.location.lng;
-    final c= detail.result.formattedAddress!.toString();
     final address= detail.result.formattedAddress.toString();
-    splitAddress(address,lat,lng);
-
+    Address ? a= splitAddress(address);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text("${p.description} - $lat/$lng")),
     );
-     stderr.writeln("${p.description} - $lat/$lng");
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return AddressComplete(address: a,);
+        },
+      ),
+    );
   }
+
+
+
+
 }
-bool isNumeric(Map<int, String> values1) {
-
-  int i=0;
-    while(values1[i]!= null){
-      i+=1;
-      return double.tryParse(values1.toString()[i]) != null;
-    }
-    return false;
-  }
 
 
+Address splitAddress(String a){
 
-void splitAddress(String address,double lat,double lng){
-  final split = address.split(',');
+
+  final split = a.split(',');
   final Map<int, String> values = {
     for (int i = 0; i < split.length; i++)
       i: split[i]
   };
-    // {0: grubs, 1:  sheep}
-
-  final street = values[0].toString();
-  final split1 = street.split(' ');
-  final Map<int, String> values1 = {
-    for (int i = 0; i < split1.length; i++)
-      i: split1[i]
-
-  };
-  final ci = values1[0];
-  final c = values1[1];
-  final cty = values1[2];
-  final y = values1[3];
-  final c1ity = values1[4];
+  final x0 = values[0];
+  var x1 = values[1];
+  final x2= values[2];
+  final x3=values[3];
+  final x4=values[4];
+  final x5=values[5];
 
 
-
-
-
-
-
-
-  stderr.writeln(ci);
-  stderr.writeln(c);
-  stderr.writeln(cty);
+  stderr.writeln("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+  stderr.writeln("x0" + x0.toString());
+  stderr.writeln("x1" + x1.toString());
+  stderr.writeln("x2" + x2.toString());
+  stderr.writeln("x3" + x3.toString());
+  stderr.writeln("x4" + x4.toString());
+  stderr.writeln("x5" + x5.toString());
+  final str = x0.toString();
+  final s= str.split(" ");
+  stderr.writeln(s);
+  String x=s[s.length-1];
+  stderr.writeln(x);
+  stderr.writeln(s.length-1);
+  String y=s[0]+" "+s[1];
   stderr.writeln(y);
-  stderr.writeln(c1ity);
+  x1 ??= '';
+  y ??= '';
+  x ??= '';
+  address=Address(x1.toString(),y.toString(),"",x.toString());
+  updateLocation(idUser!, address!);
+  return address!;
+
+}
 
 
-
-
-
-
-  final city = values[1];
-  final country = values[2];
-
-  stderr.writeln(street);
-  stderr.writeln(city);
-  stderr.writeln(country);
+String splitStreetWithoutNumber(String str){
+  final s= str.split(" ");
+  stderr.writeln(s);
+  String x=s[s.length-1];
+  stderr.writeln(x);
+  stderr.writeln(s.length-1);
+  String y=s[0]+" "+s[1];
+  stderr.writeln(y);
+  return y.toString() + x.toString();
 
 
 }
 
+
+
+
+String inputData() {
+  final User? user = auth.currentUser;
+  final uid = user?.uid;
+  if (user != null){
+    idUser=user.uid;
+    stderr.writeln(idUser);
+    return idUser!;
+  }
+  return "none";
+}
 
 // custom scaffold that handle search
 // basically your widget need to extends [GooglePlacesAutocompleteWidget]
@@ -219,16 +268,23 @@ class _CustomSearchScaffoldState extends PlacesAutocompleteState {
     final body = PlacesAutocompleteResult(
       onTap: (p) {
         displayPrediction(p, context);
-        stderr.writeln(p);
-        
-
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) {
+        //       return AddressComplete(address: address!,);
+        //     },
+        //   ),
+        // );
       },
-      
+
+
       logo: Row(
         children: const [FlutterLogo()],
         mainAxisAlignment: MainAxisAlignment.center,
       ),
     );
+
     return Scaffold(key: searchScaffoldKey, appBar: appBar, body: body);
   }
 
@@ -244,14 +300,15 @@ class _CustomSearchScaffoldState extends PlacesAutocompleteState {
   void onResponse(PlacesAutocompleteResponse? response) {
     super.onResponse(response);
     if (response != null && response.predictions.isNotEmpty) {
-      stderr.writeln(response.predictions.elementAt(0));
+      // Scaffold
       // ScaffoldMessenger.of(context).showSnackBar(
       //   const SnackBar(content: Text("Got answer")),
       // );
+
+
     }
   }
 }
-
 class Uuid {
   final Random _random = Random();
 

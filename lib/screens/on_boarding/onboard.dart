@@ -7,6 +7,7 @@ import 'package:unity26_app_v1/screens/otp/otp_screen.dart';
 
 class OnBoard extends StatefulWidget {
 
+  @override
   _OnBoardState createState() => _OnBoardState();
 }
 
@@ -18,7 +19,7 @@ class _OnBoardState extends State<OnBoard> {
   late PageController _pageController;
   List<OnboardModel> screens = <OnboardModel>[
     OnboardModel(
-      img: 'assets/images/logo_transparent.png',
+      img: 'assets/images/logo.png',
       text: "ברוכים הבאים ",
       desc:
       ".מהיום ניתן לקבל סיוע בכל מקרה חירום מאנשים שנמצאים בסביבתך",
@@ -148,8 +149,6 @@ class _OnBoardState extends State<OnBoard> {
                     ),
                   ),
                   Text(
-
-
                     screens[index].text,
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -178,7 +177,6 @@ class _OnBoardState extends State<OnBoard> {
                           Navigator.pushReplacement(context,
                               MaterialPageRoute(builder: (context) => OtpScreen()));
                           //Navigator.pushNamed(context, OtpScreen.routeName);
-
                         }
                         _pageController.nextPage(
                           duration: const Duration(milliseconds: 1),

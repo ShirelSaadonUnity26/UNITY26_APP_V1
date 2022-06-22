@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:unity26_app_v1/components/top_travelers.dart';
+import 'package:unity26_app_v1/screens/home/components/categories.dart';
+import 'package:unity26_app_v1/screens/home/components/f.dart';
 import 'package:unity26_app_v1/size_config.dart';
 import 'home_header.dart';
-import 'popular_places.dart';
+
 
 
 class Body extends StatelessWidget {
@@ -15,13 +16,12 @@ class Body extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: Column(
-          children: [
+          children:  [
             HomeHeader(),
             VerticalSpacing(),
-            PopularPlaces(),
-            VerticalSpacing(),
-            TopTravelers(),
-            VerticalSpacing(),
+            Categories(),
+            F(),
+
           ],
         ),
       ),

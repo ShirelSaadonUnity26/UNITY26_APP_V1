@@ -17,11 +17,11 @@ class SearchField extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(5),
         border: Border.all(
-          color: Color(0xFF3E4067),
+          color: const Color(0xFF3E4067),
         ),
         boxShadow: [
           BoxShadow(
-            offset: Offset(3, 3),
+            offset: const Offset(3, 3),
             blurRadius: 10,
             color: Colors.black.withOpacity(0.16),
             spreadRadius: -2,
@@ -34,9 +34,9 @@ class SearchField extends StatelessWidget {
           hintText: "Search your destination…",
           hintStyle: TextStyle(
             fontSize: getProportionateScreenWidth(12),
-            color: Color(0xFF464A7E),
+            color: const Color(0xFF464A7E),
           ),
-          suffixIcon: Icon(Icons.search),
+          suffixIcon: const Icon(Icons.search),
           contentPadding: EdgeInsets.symmetric(
             horizontal: getProportionateScreenWidth(20),
             vertical: getProportionateScreenWidth(10),

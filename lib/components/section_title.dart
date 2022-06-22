@@ -28,10 +28,10 @@ class SectionTitle extends StatelessWidget {
               fontSize: getProportionateScreenWidth(16),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           GestureDetector(
             onTap: press,
-            child: Text("See All"),
+            child: const Text("See All"),
           ),
         ],
       ),

@@ -224,7 +224,7 @@ class _LocationAutocompleteFieldState extends State<PlacesAutocompleteField> {
                 onTap: widget.trailingOnTap,
                 child: widget.trailingOnTap != null
                     ? widget.trailing
-                    : Icon(
+                    : const Icon(
                         Icons.invert_colors_on_sharp,
                         color: Colors.grey,
                       ),

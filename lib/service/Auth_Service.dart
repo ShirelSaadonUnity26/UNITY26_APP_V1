@@ -14,7 +14,7 @@ class AuthClass {
     ],
   );
 
-  final storage = new FlutterSecureStorage();
+  final storage = const FlutterSecureStorage();
   Future<void> googleSignIn(BuildContext context) async {
     try {
       GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
@@ -24,19 +24,17 @@ class AuthClass {
         accessToken: googleSignInAuthentication.accessToken,
         idToken: googleSignInAuthentication.idToken,
       );
-      if (googleSignInAccount != null) {
-        UserCredential userCredential =
-        await _auth.signInWithCredential(credential);
-        storeTokenAndData(userCredential);
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (builder) => OtpScreen()),
-                (route) => false);
+      UserCredential userCredential =
+      await _auth.signInWithCredential(credential);
+      storeTokenAndData(userCredential);
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (builder) => OtpScreen()),
+              (route) => false);
 
-        final snackBar =
-        SnackBar(content: Text('nnnnnn'));
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      }
+      const snackBar =
+      SnackBar(content: Text('nnnnnn'));
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     } catch (e) {
       print("here---->");
       final snackBar = SnackBar(content: Text(e.toString()));
@@ -89,7 +87,7 @@ class AuthClass {
     };
     try {
       await _auth.verifyPhoneNumber(
-          timeout: Duration(seconds: 60),
+          timeout: const Duration(seconds: 60),
           phoneNumber: phoneNumber,
           verificationCompleted: verificationCompleted,
           verificationFailed: verificationFailed,

@@ -22,15 +22,15 @@ class RoundedInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: TextField(
           controller: controller,
           decoration: InputDecoration(
-            icon: this.icon,
-            hintText: this.hintText,
-            labelText: this.labelText,
-            hintStyle: TextStyle(color: kHintColor),
-            labelStyle: TextStyle(
+            icon: icon,
+            hintText: hintText,
+            labelText: labelText,
+            hintStyle: const TextStyle(color: kHintColor),
+            labelStyle: const TextStyle(
               color: Colors.black,
             ),
           )),
@@ -38,7 +38,7 @@ class RoundedInputField extends StatelessWidget {
         color: kTextFieldColor,
         borderRadius: BorderRadius.circular(29),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
     );
   }
 }

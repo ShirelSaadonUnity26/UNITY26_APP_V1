@@ -1,0 +1,25 @@
+<svg id="medical_icon" data-name="medical icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28.898" height="28" viewBox="0 0 28.898 28">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_2088" data-name="Rectangle 2088" width="28.898" height="28" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect id="Rectangle_2086" data-name="Rectangle 2086" width="27.574" height="26.419" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_33424" data-name="Group 33424" clip-path="url(#clip-path)">
+    <g id="Group_33423" data-name="Group 33423" transform="translate(0 0)">
+      <g id="Group_33422" data-name="Group 33422" clip-path="url(#clip-path)">
+        <g id="Group_33421" data-name="Group 33421" transform="translate(0 0)" opacity="0.995">
+          <g id="Group_33420" data-name="Group 33420">
+            <g id="Group_33419" data-name="Group 33419" clip-path="url(#clip-path-3)">
+              <path id="Path_15670" data-name="Path 15670" d="M13.787,26.419h0a.379.379,0,0,1-.3-.142L1.183,10.992a.291.291,0,0,1-.022-.029A7.079,7.079,0,0,1,7.083,0a7.132,7.132,0,0,1,6.7,4.8A7.083,7.083,0,1,1,26.17,11.3L14.082,26.278a.379.379,0,0,1-.295.141" transform="translate(0)" fill="#a6c8e6"/>
+            </g>
+          </g>
+        </g>
+        <path id="Path_15671" data-name="Path 15671" d="M15.786,30.593h0a.377.377,0,0,1-.295-.142L3.182,15.167a.263.263,0,0,1-.022-.029A7.079,7.079,0,0,1,9.082,4.174a7.133,7.133,0,0,1,6.7,4.8,7.082,7.082,0,1,1,12.387,6.5L16.081,30.452a.377.377,0,0,1-.295.141m-12-15.886,12,14.9,11.784-14.6a6.26,6.26,0,0,0,1.245-3.757A6.324,6.324,0,0,0,16.193,10.7a.4.4,0,0,1-.006.044l-.03.143a.38.38,0,0,1-.366.3h0a.379.379,0,0,1-.369-.293l-.029-.124a.374.374,0,0,1-.008-.054,6.323,6.323,0,0,0-12.624.539,6.293,6.293,0,0,0,1.027,3.449" transform="translate(-1.242 -2.593)"/>
+        <path id="Path_15672" data-name="Path 15672" d="M14.865,35.931a.372.372,0,0,1-.058,0,.379.379,0,0,1-.321-.374V32.211l-1.3,2.862a.379.379,0,0,1-.722-.129l-.434-5.754-.972,3.357a.379.379,0,0,1-.364.274H.5v-.758h9.9l1.477-5.1a.379.379,0,0,1,.741.077l.48,6.374L14.52,30.3a.379.379,0,0,1,.724.157v2.628l2.088-6.63a.379.379,0,0,1,.739.079l.489,5.312H29.212v.758h-11a.379.379,0,0,1-.377-.344l-.348-3.781-2.263,7.184a.378.378,0,0,1-.361.265" transform="translate(-0.314 -16.272)"/>
+      </g>
+    </g>
+  </g>
+</svg>

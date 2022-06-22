@@ -8,8 +8,9 @@ AppBar buildAppBar(BuildContext context,
     backgroundColor: isTransparent ? Colors.transparent : Colors.white,
     elevation: 0,
     leading: IconButton(
-      icon: Icon(
+      icon: const Icon(
         Icons.menu,
+        textDirection: TextDirection.rtl,
         color: kIconColor,
       ),
       onPressed: () {},
@@ -17,15 +18,10 @@ AppBar buildAppBar(BuildContext context,
     title: ! isTransparent
         ? Text(
             isTransparent ? "" : title,
-            style: TextStyle(color: kTextColor),
+            style: const TextStyle(color: kTextColor),
           )
         : null,
     centerTitle: true,
-    actions: [
-      IconButton(
-        icon: ClipOval(child: Image.asset("assets/images/profile.png")),
-        onPressed: () {},
-      )
-    ],
+
   );
 }

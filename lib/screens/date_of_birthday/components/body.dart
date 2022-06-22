@@ -1,16 +1,18 @@
 
 import 'dart:io';
+import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:http/http.dart';
 import 'package:intl/intl.dart' as intl;
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:unity26_app_v1/API/Http_Caller.dart';
 import 'package:unity26_app_v1/components/RoundedButon.dart';
-import 'package:unity26_app_v1/google_places/places_autocomplete_form_field.dart';
+import 'package:unity26_app_v1/constants.dart';
 import 'package:unity26_app_v1/models/userBoundary.dart';
+import 'package:unity26_app_v1/screens/is_assistant/is_assistant_screen.dart';
 import 'package:unity26_app_v1/screens/places_autocomplete/routes_widget_screen.dart';
-import  'dart:developer';
 
 
 class Body extends StatefulWidget {
@@ -30,6 +32,12 @@ class _Body extends State<Body> {
   bool? brushedTeeth = false;
   bool enableFeature = false;
 
+  int ageUser(DateTime dateTime){
+    int age;
+    age= 2022-dateTime.year;
+    return age;
+
+  }
 
   get onClicked => null;
   late String  idUser;
@@ -42,26 +50,37 @@ class _Body extends State<Body> {
       stderr.writeln(idUser);
     }
   }
+  bool isValidAge(DateTime value){
+    int age = CURRENT_YEAR-value.year;
+    if (age < MIN_AGE_FOR_SIGN_UP || age >MAX_AGE_FOR_SIGN_UP){
+      return false;
+    }
+    return true;
+
+
+
+  }
 
   @override
   Widget build(BuildContext context) {
 
     inputData();
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
 
-      appBar: AppBar(
-        title: const Text('Form widgets'),
-      ),
-      body: Form(
-        key: _formKey,
+    return Scaffold(backgroundColor:kbackground,
+      body: Form(key: _formKey,
+
+
         child: Scrollbar(
+
           child: Align(
-            alignment: Alignment.topCenter,
-            child: Card(
+
+            alignment: Alignment.center,
+            child: Card(color: kbackground,
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(70),
                   child: ConstrainedBox(
+
                     constraints: const BoxConstraints(maxWidth: 400),
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -71,23 +90,13 @@ class _Body extends State<Body> {
                             RichText(
                               textAlign: TextAlign.center,
                               text: const TextSpan(
-                                  text: 'UN',
+                                  text: 'פרטים אישיים',
                                   style: TextStyle(
                                       fontSize: 30,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xffe46b10)
+                                      color: Color(0xff85b9ee)
                                   ),
-
-                                  children: [
-                                    TextSpan(
-                                      text: 'ITY',
-                                      style: TextStyle(color: Colors.black, fontSize: 30),
-                                    ),
-                                    TextSpan(
-                                      text: '26',
-                                      style: TextStyle(color: Color(0xffe46b10), fontSize: 30),
-                                    ),
-                                  ]),
+                              )
                             ),
                             const SizedBox(
                               height: 170,
@@ -95,30 +104,45 @@ class _Body extends State<Body> {
 
                             _FormDatePicker(
 
+
                               date: date,
                               onChanged: (value) {
                                 setState(() {
                                   date = value;
                                 });
                               },
+
                             ),
+
                             const SizedBox(
                               height: 170,
                             ),
                             RoundedButton(
                                 text: "הבא ",
                                 press: () {
-                                  update1(idUser.toString(), date.toString());
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return RoutesWidgetScreen();
-                                          },
-                                        ),
-                                       );
+                                  if(!isValidAge(date)){
+                                    Alert(
+                                        context: context,
+                                        type: AlertType.error,
+                                        title: "שגיאה במהלך הרישום",
+                                        desc: "תאריך הלידה שהזנת,אינו תקין")
+                                        .show();
+                                  }
+                                  else {
+                                    update1(idUser.toString(), date.toString());
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return const IsAssistantScreen();
 
+                                          //return RoutesWidgetScreen();
+                                        },
+                                      ),
+                                    );
+                                  }
                                 }),
+                            SizedBox(height: size.height * 0.005),
                       ]
                       ],
                   ),
@@ -133,7 +157,16 @@ class _Body extends State<Body> {
   }
 }
 
+bool isValidAge(DateTime value){
+  int age = 2022-value.year;
+  if (age > 12 && age <85){
+    return false;
+  }
+  return true;
 
+
+
+}
 
 
 
@@ -161,33 +194,38 @@ class _FormDatePickerState extends State<_FormDatePicker> {
   @override
   Widget build(BuildContext context) {
     return Row(
-
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
+
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-
           children: [
             Text(
               'תאריך לידה',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .bodyText1,
+              style:
+              TextStyle(fontSize: 18,color: kblack)
+              // Theme
+              //     .of(context)
+              //     .textTheme
+              //     .bodyText1
             ),
+
             Text(
               intl.DateFormat.yMd().format(widget.date),
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .subtitle1,
+              // style:Theme
+              //     .of(context)
+              //     .textTheme
+              //     .subtitle1,
+              style:
+              TextStyle(fontSize: 18,color: kblack),
+
             ),
           ],
         ),
         TextButton(
-          child: const Text('בחר'),
+          child:Text('בחר',style: TextStyle(fontSize: 18 ,color:kblack  )),
           onPressed: () async {
             var newDate = await showDatePicker(
               context: context,

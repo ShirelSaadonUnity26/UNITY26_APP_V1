@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:unity26_app_v1/constants.dart';
-import 'package:unity26_app_v1/screens/event/events_screen.dart';
+import 'package:unity26_app_v1/screens/center_helper/center_helper_screen.dart';
 import 'package:unity26_app_v1/size_config.dart';
 
 
@@ -23,25 +23,25 @@ class CustomBottonNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               NavItem(
-                icon: "assets/icons/calendar.svg",
-                title: "Events",
+                icon: "assets/icons_new/sos1.svg",
+                title: "סיוע",
                 press: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EventsScreen(),
+                        builder: (context) => CenterHelperScreen(),
                       ));
                 },
               ),
               NavItem(
-                icon: "assets/icons/chat.svg",
-                title: "Chat",
+                icon: "assets/icons_new/calls.svg",
+                title: "קריאות",
                 isActive: true,
                 press: () {},
               ),
               NavItem(
-                icon: "assets/icons/friendship.svg",
-                title: "Friends",
+                icon: "assets/icons_new/profile.svg",
+                title: "פרופיל",
                 press: () {},
               ),
             ],
@@ -69,7 +69,7 @@ class NavItem extends StatelessWidget {
     return InkWell(
       onTap: press,
       child: Container(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         height: getProportionateScreenWidth(60),
         width: getProportionateScreenWidth(60),
         decoration: BoxDecoration(
@@ -84,10 +84,10 @@ class NavItem extends StatelessWidget {
               color: kTextColor,
               height: 28,
             ),
-            Spacer(),
+            const Spacer(),
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.bold,
               ),

@@ -8,7 +8,7 @@ import 'package:otp_text_field/style.dart';
 import 'package:unity26_app_v1/constants.dart';
 
 class PhoneAuthPage extends StatefulWidget {
-  PhoneAuthPage({Key ? key}) : super(key: key);
+  const PhoneAuthPage({Key ? key}) : super(key: key);
 
   @override
   _PhoneAuthPageState createState() => _PhoneAuthPageState();
@@ -34,20 +34,20 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
         ),
         centerTitle: true,
       ),
-      body: Container(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 120,
               ),
               textField(),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width - 30,
                 child: Row(
                   children: [
@@ -55,10 +55,10 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                       child: Container(
                         height: 1,
                         color: Colors.black12,
-                        margin: EdgeInsets.symmetric(horizontal: 12),
+                        margin: const EdgeInsets.symmetric(horizontal: 12),
                       ),
                     ),
-                    Text(
+                    const Text(
                       "הכנס קוד אבטחה",
                       style: TextStyle(fontSize: 16, color: Colors.black)
                     ),
@@ -66,37 +66,37 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                       child: Container(
                         height: 1,
                         color: Colors.grey,
-                        margin: EdgeInsets.symmetric(horizontal: 12),
+                        margin: const EdgeInsets.symmetric(horizontal: 12),
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               otpField(),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               RichText(
                   text: TextSpan(
                     children: [
-                      TextSpan(
+                      const TextSpan(
                         text: "הקוד ישלח מחדש בעוד  ",
                         style: TextStyle(fontSize: 16, color: Colors.blueGrey),
                       ),
                       TextSpan(
                         text: "00:$start",
-                        style: TextStyle(fontSize: 16, color: Colors.deepOrange),
+                        style: const TextStyle(fontSize: 16, color: Colors.deepOrange),
                       ),
-                      TextSpan(
+                      const TextSpan(
                         text:"שניות",
                         style: TextStyle(fontSize: 16, color: Colors.blueGrey),
                       ),
                     ],
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 150,
               ),
               InkWell(
@@ -108,9 +108,9 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
                   height: 60,
                   width: MediaQuery.of(context).size.width - 60,
                   decoration: BoxDecoration(
-                      color: Color(0xff5c7793),
+                      color: const Color(0xff5c7793),
                       borderRadius: BorderRadius.circular(15)),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "אישור",
                       style: TextStyle(
@@ -170,21 +170,21 @@ class _PhoneAuthPageState extends State<PhoneAuthPage> {
       width: MediaQuery.of(context).size.width - 40,
       height: 60,
       decoration: BoxDecoration(
-        color: Color(0xff1d1d1d),
+        color: const Color(0xff1d1d1d),
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextFormField(
         controller: phoneController,
-        style: TextStyle(color: Colors.white, fontSize: 17),
+        style: const TextStyle(color: Colors.white, fontSize: 17),
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: "הזן את הטלפון שלך על מנת להתחבר" ,
-          hintStyle: TextStyle(color: Colors.white54, fontSize: 17),
+          hintStyle: const TextStyle(color: Colors.white54, fontSize: 17),
           contentPadding:
           const EdgeInsets.symmetric(vertical: 19, horizontal: 8),
-          prefixIcon: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 15),
+          prefixIcon: const Padding(
+            padding: EdgeInsets.symmetric(vertical: 14, horizontal: 15),
             child: Text(
               " (+972) ",
               style: TextStyle(color: Colors.white, fontSize: 17),
